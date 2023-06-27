@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <title>regestration</title>
+        <link rel="stylesheet" type="text/css" href="design.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="valid.js"></script>
+    </head>
+    <body id="body_log" class="banner_img">
+    <div id="aling">
+        <header class="hed">
+            <p>Dashboard</p>
+            <nav>
+                <ul>
+                    <li class="nav_link"><a href="">About Us</a></li>
+                    <li class="nav_link"><a href="">Contact Us</a></li>
+                    <li class="nav_link"><a href="">Terms & Condition</a></li>
+                    <li class="nav_link"><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="title">Regestration</div>
+            <form method="POST" action="process.php" onsubmit="" enctype="multipart/form-data" name="myform">
+                <div class="user_details">
+                    <div class="input_box">
+                        <span class="details">Last Name:-</span>
+                        <input type="text" name="lname">
+                    </div>
+                    <div class="input_box">
+                        <span class="details">First Name:-</span>
+                        <input type="text" name="fname" >
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Middle Name:-</span>
+                        <input type="text" name="mname" required>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Phone No.:-</span>
+                        <input type="number" name="pno" required on>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Parent Phone No.:-</span>
+                        <input type="number" name="ppno" required>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Date of Birth:-</span>
+                        <input type="date" name="dob" required>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Caste:-</span>
+                        <select name="rel" id="caste_sel" required>
+                            <option value="">Choose Caste:</option>
+                            <option value="OPEN">OPEN</option>
+                            <option value="OBC">OBC</option>
+                            <option value="ST">ST</option>
+                        </select>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Username:-</span>
+                        <input type="text" name="username" id="username" onInput="checkUsername()" required>
+                        <span id="check-username"></span>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Permanent Address:-</span>
+                        <textarea name="per_add" id="area" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Current Address:-</span>
+                        <textarea name="cur_add" id="area" cols="30" rows="10"></textarea>
+                    </div>
+                    
+                    <div class="input_box">
+                        <span class="details">Password:-</span>
+                        <input type="password" id="psw" name="psw" required>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Re-enter Password:-</span>
+                        <input type="password" name="re_pass" required>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Photo:-</span>
+                        <input type="file" name="pic1" class="upload_box" required>
+                    </div>
+                    <div class="input_box">
+                        <span class="details">Signature:-</span>
+                        <input type="file" name="sig1" class="upload_box" required>
+                    </div>
+                </div>
+                <div class="radio_details">
+                    <input type="radio" name="gender" value="Male" id="dot_1">
+                    <input type="radio" name="gender" value="Female" id="dot_2">
+                    <span class="radio_title">Gender</span>
+                    <div class="category">
+                        <label for="dot_1">
+                            <span class="dot one"></span>
+                            <span class="radio">Male</span>
+                        </label>
+                        <label for="dot_2">
+                            <span class="dot two"></span>
+                            <span class="radio">Female</span>
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <div class="radio_details">
+                    <input type="radio" name="status" value="Married" id="dot_3">
+                    <input type="radio" name="status" value="Unmarried" id="dot_4">
+                    <span class="radio_title">Marital Status</span>
+                    <div class="category">
+                        <label for="dot_3">
+                            <span class="dot three"></span>
+                            <span class="radio">Married</span>
+                        </label>
+                        <label for="dot_4">
+                            <span class="dot four"></span>
+                            <span class="radio">Unmarried</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" name="reg" value="REGISTER">   
+                </div>
+            </form>
+            <a href="login.html">
+                    <button class="log_r">LOGIN</button>
+            </a>
+        </div>
+    </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        function checkUsername() 
+        {
+            jQuery.ajax({
+            url: "process.php",
+            data:'username='+$("#username").val(),
+            type: "POST",
+            success:function(data){
+            $("#check-username").html(data);
+            },
+            error:function (){}
+            });
+        }
+        </script>
+    </body>
+</html>
+
